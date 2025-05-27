@@ -94,7 +94,14 @@ public class StreamExamples {
         );
         List<String> wordsfromSentences=sentences.stream().
                 map(sentence->sentence.split(" ")).flatMap(x-> Arrays.stream(x).sequential()).collect(Collectors.toList());
-        return wordsfromSentences;
+        return wordsfromSentences;//output:-[Java, is, awesome, Streams, are, powerful, Practice, makes, perfect]
+    }
+    public String mostFrequentString(){
+        List<String> logs = Arrays.asList("INFO", "ERROR", "INFO", "WARN", "ERROR", "ERROR", "DEBUG");
+        var mostFrequentString=logs.stream().collect(Collectors.
+                groupingBy(Function.identity(),Collectors.counting())).entrySet().stream().max(Map.Entry.comparingByValue()).toString();
+        return mostFrequentString;//output Optional[ERROR=3]
+
     }
 
 

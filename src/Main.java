@@ -46,6 +46,9 @@ public class Main {
      List<String> wordsfromSentences=streamexample.getwordsfromSentences();
      System.out.println(wordsfromSentences);
 
+     String mostFrequentString=streamexample.mostFrequentString();
+     System.out.println(mostFrequentString);
+
 
 
     }
