@@ -98,10 +98,22 @@ public class StreamExamples {
     }
     public String mostFrequentString(){
         List<String> logs = Arrays.asList("INFO", "ERROR", "INFO", "WARN", "ERROR", "ERROR", "DEBUG");
-        var mostFrequentString=logs.stream().collect(Collectors.
-                groupingBy(Function.identity(),Collectors.counting())).entrySet().stream().max(Map.Entry.comparingByValue()).toString();
+        var mostFrequentString=logs.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .map(x->x.getKey()) // .map(Map.Entry::getKey)
+                .orElse("");
         return mostFrequentString;//output Optional[ERROR=3]
 
+    }
+    public static  List<String> listOfCitiesSortedByFrequency(){
+        List<String> cities = Arrays.asList(
+                "Mumbai", "Delhi", "Bangalore", "Chennai", "Kolkata", "Delhi", "Mumbai", "Mumbai", "Chennai"
+        );
+        List<String> listOfCitiesSortedByFrequency=cities.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()))
+                .entrySet().stream().sorted(Map.Entry.<String, Long>comparingByValue().reversed()).map(Map.Entry::getKey).collect(Collectors.toList());
+        return listOfCitiesSortedByFrequency;//output [Mumbai, Delhi, Chennai, Kolkata, Bangalore]
     }
 
 

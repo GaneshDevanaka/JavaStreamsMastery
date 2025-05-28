@@ -49,6 +49,8 @@ public class Main {
      String mostFrequentString=streamexample.mostFrequentString();
      System.out.println(mostFrequentString);
 
+     List<String> listOfCitiesSortedByFrequency=StreamExamples.listOfCitiesSortedByFrequency();
+     System.out.println(listOfCitiesSortedByFrequency);
 
 
     }
