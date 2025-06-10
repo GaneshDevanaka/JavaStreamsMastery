@@ -115,6 +115,48 @@ public class StreamExamples {
                 .entrySet().stream().sorted(Map.Entry.<String, Long>comparingByValue().reversed()).map(Map.Entry::getKey).collect(Collectors.toList());
         return listOfCitiesSortedByFrequency;//output [Mumbai, Delhi, Chennai, Kolkata, Bangalore]
     }
+    List<Employee> employees = Arrays.asList(
+            new Employee("Ganesh", "IT"),
+            new Employee("Alice", "HR"),
+            new Employee("Bob", "IT"),
+            new Employee("John", "Finance"),
+            new Employee("Eve", "HR")
+    );
+    public Map<String,List<String>> groupingEmployeesByDepartment() {
+
+        Map<String,List<String>> groupingEmployeesByDepartment=employees.stream().collect(Collectors.
+                groupingBy(Employee::getDepartment,Collectors.mapping(Employee::getName,Collectors.toList())));
+        return  groupingEmployeesByDepartment;//output {Finance=[John], HR=[Alice, Eve], IT=[Ganesh, Bob]}
+
+    }
+    public Map<Boolean,List<String>> partioningEmployeesByDepartment() {
+        Map<Boolean,List<String>> partioningEmployeesByDepartment=employees.stream().
+                collect(Collectors.partitioningBy(emp->emp.getDepartment().equals("IT"),Collectors.mapping(Employee::getName,Collectors.toList())));
+        return  partioningEmployeesByDepartment;//output {false=[Alice, John, Eve], true=[Ganesh, Bob]}
+    }
+
+    public Map<String,List<String>> groupingAndFilteringEmployeesByDepartment() {
+
+        Map<String,List<String>> groupingAndFilteringEmployeesByDepartment=employees.stream().filter(emp-> emp.getName().startsWith("G") || emp.getName().startsWith("J")).
+                collect(Collectors.
+                groupingBy(Employee::getDepartment,Collectors.mapping(Employee::getName,Collectors.toList())));
+        return  groupingAndFilteringEmployeesByDepartment;//output {Finance=[John], IT=[Ganesh]}}
+
+    }
+    public static Integer reduceProductOfNumbers(){
+        List<Integer> numbers = Arrays.asList(3, 5, 7, 2, 9);
+        Integer reduceProductOfNumbers=numbers.stream().reduce(1,(x,y)->x*y);
+        return reduceProductOfNumbers;// OUTPUT 1890
+    }
+
+    public static OptionalDouble averageLengt0fAllWords(){
+        List<String> words = Arrays.asList("Streams", "are", "very", "powerful", "and", "fun");
+            OptionalDouble averageLengt0fAllWords=words.stream().mapToInt(String::length).average();
+            return averageLengt0fAllWords;// OUTPUT OptionalDouble[4.666666666666667]
+    }
+
+
+
 
 
 }

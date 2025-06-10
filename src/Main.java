@@ -1,6 +1,4 @@
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Stream;
 
 
@@ -40,6 +38,7 @@ public class Main {
      System.out.println(partitionEvenOddList);
 
      StreamExamples streamexample=new StreamExamples();
+
      List<String> listOfDuplicateStrings=streamexample.listOfDuplicate();
      System.out.println(listOfDuplicateStrings);
 
@@ -51,6 +50,22 @@ public class Main {
 
      List<String> listOfCitiesSortedByFrequency=StreamExamples.listOfCitiesSortedByFrequency();
      System.out.println(listOfCitiesSortedByFrequency);
+
+     Map<String,List<String>> groupingEmployeesByDepartment=streamexample.groupingEmployeesByDepartment();
+     System.out.println(groupingEmployeesByDepartment);
+
+     Map<Boolean,List<String>> partioningEmployeesByDepartment=streamexample.partioningEmployeesByDepartment();
+     System.out.println(partioningEmployeesByDepartment);
+
+     Map<String,List<String>> groupingAndFilteringEmployeesByDepartment= streamexample.groupingAndFilteringEmployeesByDepartment();
+     System.out.println(groupingAndFilteringEmployeesByDepartment);
+
+     Integer reduceProductOfNumbers=StreamExamples.reduceProductOfNumbers();
+     System.out.println(reduceProductOfNumbers);
+
+     OptionalDouble averageLengt0fAllWords=StreamExamples.averageLengt0fAllWords();
+     System.out.println(averageLengt0fAllWords);
+
 
 
     }
