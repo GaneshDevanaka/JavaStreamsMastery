@@ -155,6 +155,19 @@ public class StreamExamples {
             return averageLengt0fAllWords;// OUTPUT OptionalDouble[4.666666666666667]
     }
 
+    public static IntSummaryStatistics  summaryStatistics(){
+        List<Integer> numbers = Arrays.asList(10, 20, 30, 40, 50);
+        IntSummaryStatistics summaryStatistics=numbers.stream().mapToInt(x->x).summaryStatistics();
+        return summaryStatistics;// OUTPUT IntSummaryStatistics{count=5, sum=150, min=10, average=30.000000, max=50}
+    }
+
+    public static List<String>  peekBeforeFiltering(){
+        List<String> words = Arrays.asList("Java", "Stream", "API", "Power", "Debug");
+        List<String> peekBeforeFiltering=words.stream()
+                .peek(word -> System.out.println("Before filter: " + word))  .filter(x->x.length()>4).peek(word -> System.out.println("After filter: " + word))  .collect(Collectors.toList());
+        return peekBeforeFiltering;// OUTPUT IntSummaryStatistics{count=5, sum=150, min=10, average=30.000000, max=50}
+    }
+
 
 
 

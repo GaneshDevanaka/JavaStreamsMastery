@@ -66,6 +66,12 @@ public class Main {
      OptionalDouble averageLengt0fAllWords=StreamExamples.averageLengt0fAllWords();
      System.out.println(averageLengt0fAllWords);
 
+     IntSummaryStatistics summaryStatistics=StreamExamples.summaryStatistics();
+     System.out.println(summaryStatistics);
+
+     List<String> peekBeforeFiltering=StreamExamples.peekBeforeFiltering();
+     System.out.println(peekBeforeFiltering);
+
 
 
     }
